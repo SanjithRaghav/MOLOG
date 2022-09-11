@@ -1,0 +1,20 @@
+{
+  "name": "movie-site",
+  "version": "1.0.0",
+  "description": "a movie recommendation site",
+  "main": "app.js",
+  "scripts": {
+    "build": "npx tailwindcss build -i ./src/styles.css -o public/css/styles.css ",
+    "watch": "npx tailwindcss build -i ./src/styles.css -o public/css/styles.css --watch"
+  },
+  "author": "Sanjith Raghav",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  }
+}
