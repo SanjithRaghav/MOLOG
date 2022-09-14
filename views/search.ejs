@@ -1,28 +1,13 @@
 <%-include('header');-%>
 <body class=" font-Montserrat">
-    <div class="fixed my-0 top-0 w-[100%] mx-auto text-white bg-black bg-opacity- backdrop-blur-lg shadow-md z-50" >
-        <div class="">
-
-            <ul class="flex justify-center md:space-x-40 space-x-8 py-6">
-                <li><a href="#" class="hover:animate-pulse font-light">HOME</a></li>
-                <li><a href="#" class="hover:animate-pulse font-light">MY MOVIES</a></li>
-                <li><a id="search" href="#" class="hover:animate-pulse font-light">SEARCH</a></li>            
-            </ul>
-        </div>
-        <div id="searchBar" class="text-center hidden">
-            <form action="/" method="post">
-                <input class=" w-40  placeholder:text-slate-400 inline border-x-0 border-t-0 bg-black te border-b-2  border border-white  py-2 pl-9 pr-3  focus:outline-none focus:border-sky-50 text-white" placeholder="Movie name" type="text" name="Movie"/>
-                <button type="submit" value="search" name="button" class=" text-white py-3 px-4 rounded-[15px]"><i class="fa-solid fa-chevron-right text-white"></i></button>                
-            </form>
-        </div>
-    </div>
+   
     <%if(list.results.length==0){%>
         <p class="mt-32 text-center text-xs">No movies found</p>
     <%}%>
     <form action="/" method="post">
-        <div class="mx-10 mt-32 mb-10 grid lg:grid-cols-5 md:grid-cols-4 gap-y-5 md:grid-rows-4 sm:grid-cols-2 grid-cols-2" >
+        <div class="mx-10 mt-32 mb-10 grid lg:grid-cols-5 md:grid-cols-4 gap-y-5 md:grid-rows-4 sm:grid-cols-2 grid-cols-1" >
             <%for(var i=0;i<list.results.length;i++){%>
-                <button type="submit" name="button" value="<%=list.results[i].id%>" class="flex  items-center ">
+                <button type="submit" name="button" value="<%=list.results[i].id%>" class="flex  items-center justify-center">
                     <div class="movie w-[80%] p-5 shadow-2xl rounded-[30px] pb-7 transition duration-300 ease-in hover:scale-110">
                         <img class="mx-auto md:w-[200px]  w-[150px]  rounded-[30px] " src="https://image.tmdb.org/t/p/original/<%=list.results[i].poster_path%>">
                         <p class="text-center font-semibold"><%=list.results[i].title%></p>

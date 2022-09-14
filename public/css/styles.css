@@ -551,6 +551,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .fixed {
   position: fixed;
 }
@@ -659,8 +663,8 @@ video {
   width: 60%;
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .items-center {
@@ -745,10 +749,6 @@ video {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
 
-.bg-\[url\(\'https\:\/\/image\.tmdb\.org\/t\/p\/original\<\%\=movie\.poster_path\%\>\'\)\] {
-  background-image: url('https://image.tmdb.org/t/p/original<%=movie.poster_path%>');
-}
-
 .from-\[rgba\(0\2c 0\2c 0\2c 0\.9\)\] {
   --tw-gradient-from: rgba(0,0,0,0.9);
   --tw-gradient-to: rgb(0 0 0 / 0);
@@ -795,6 +795,11 @@ video {
   padding-right: 1rem;
 }
 
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -831,6 +836,10 @@ video {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-\[0\.5rem\] {
+  font-size: 0.5rem;
 }
 
 .text-xs {
@@ -968,9 +977,18 @@ video {
     font-size: 2.25rem;
     line-height: 2.5rem;
   }
+
+  .sm\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
 }
 
 @media (min-width: 768px) {
+  .md\:visible {
+    visibility: visible;
+  }
+
   .md\:w-\[200px\] {
     width: 200px;
   }
@@ -989,12 +1007,14 @@ video {
     margin-left: calc(10rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
-  .md\:bg-\[url\(\'https\:\/\/image\.tmdb\.org\/t\/p\/original\/rx9kyO6YJLpXfFrU934C6i4yYMj\.jpg\'\)\] {
-    background-image: url('https://image.tmdb.org/t/p/original/rx9kyO6YJLpXfFrU934C6i4yYMj.jpg');
+  .md\:space-x-12 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(3rem * var(--tw-space-x-reverse));
+    margin-left: calc(3rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
-  .md\:bg-\[url\(\'https\:\/\/image\.tmdb\.org\/t\/p\<\%\=movie\.backdrop_path\%\>\'\)\] {
-    background-image: url('https://image.tmdb.org/t/p<%=movie.backdrop_path%>');
+  .md\:bg-\[url\(\'https\:\/\/image\.tmdb\.org\/t\/p\/original\/rx9kyO6YJLpXfFrU934C6i4yYMj\.jpg\'\)\] {
+    background-image: url('https://image.tmdb.org/t/p/original/rx9kyO6YJLpXfFrU934C6i4yYMj.jpg');
   }
 
   .md\:text-5xl {

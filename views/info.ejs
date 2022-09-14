@@ -1,4 +1,13 @@
-<%-include('header');-%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>MOLOG</title>
+</head>
 <style>
   .poster{
     background-image:url('https://image.tmdb.org/t/p/original<%=movie.poster_path%>');
@@ -34,7 +43,7 @@
             <div class="pl-16 absolute top-[20%]">
                 <p class="md:text-5xl lg:text-7xl sm:text-4xl mix-blend-difference text-slate-100 font-bold pb-12"><%=movie.title%></p>
                 <form class="pb-12 flex text-white w-[20%] justify-between">
-                    <p><%=movie.runtime%></p>
+                    <p><%=movie.runtime%> mins</p>
                     <button type="submit"><i class="fa-solid fa-list-check"></i> add</button>
                     
                 </form>
