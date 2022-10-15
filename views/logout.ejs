@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <title>MOLOG</title>
+</head>
+<body class="bg-black">
+    <div class="p-10 bg-white mx-auto mt-[10%] w-[25rem]">
+        <p class="font-Montserrat font-extrabold text-[1.3rem] w-[70%]">Hey <%=name%><span class="text-red-500">!</span></p>
+        <p class="text-center pt-4 text-[1.2rem]">Oh no! you're leaving</p>
+        <p class="text-center pt-4 text-[1.2rem]">Are you sure?</p>
+        <a href="/search" class="block text-center mt-8 bg-gray-300 text-black shadow-gray-400 hover:text-white hover:bg-black shadow-2xl rounded-2xl w-[100%] py-2">Nah, Just Kidding</a>
+
+        <div class="w-full h-px bg-gray-300 my-5" style="opacity: 1; transform-origin: 50% 50% 0px;"></div>
+
+        <form action="/logout" method="post" class="my-6">
+            <button class="hover:bg-gray-300 hover:text-black bg-black shadow-gray-400 text-white shadow-2xl rounded-2xl w-[100%] py-2">Yes, Log me out</button>
+        </form>
+        
+    </div>
+
+    
+</body>
+    
+
+</html>

@@ -22,16 +22,18 @@
 </style>
 <body class="font-Montserrat">
     <div class="fixed my-0 top-0 w-[100%] mx-auto text-white bg-black bg-opacity-20 backdrop-blur-lg shadow-md z-50" >
-        <div class="">
-
-            <ul class="flex justify-center md:space-x-40 space-x-8 py-6">
-                <li><a href="#" class="hover:animate-pulse font-light">HOME</a></li>
-                <li><a href="#" class="hover:animate-pulse font-light">MY MOVIES</a></li>
-                <li><a id="search" href="#" class="hover:animate-pulse font-light">SEARCH</a></li>            
+        <div class="flex justify-between">
+            
+            <p class="px-5 inline py-6"><i class="inline fa-solid fa-film"></i><span class="invisible md:visible">MOLOG</span></p>
+            <ul class="flex justify-center md:space-x-12 space-x-8 py-6">
+                <li><a href="#" class="hover:animate-pulse font-light sm:text-base text-[0.5rem]">HOME</a></li>
+                <li><a href="#" class="hover:animate-pulse font-light sm:text-base text-[0.5rem]">MY MOVIES</a></li>
+                <li><a id="search" href="#" class="hover:animate-pulse font-light sm:text-base text-[0.5rem]">SEARCH</a></li>            
             </ul>
+            <a><i class="px-5 py-6 fa-regular fa-user"></i></a>
         </div>
         <div id="searchBar" class="text-center hidden">
-            <form action="/" method="post">
+            <form action="/search" method="post">
                 <input class=" w-40  bg-transparent  placeholder:text-white inline border-x-0 border-t-0  border-b-2  border border-white  py-2 pl-9 pr-3  focus:outline-none focus:border-sky-50 text-white" placeholder="Movie name" type="text" name="Movie"/>
                 <button type="submit" value="search" name="button" class=" text-white py-3 px-4 rounded-[15px]"><i class="fa-solid fa-chevron-right text-white"></i></button>
                 
