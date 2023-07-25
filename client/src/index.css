@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+
+@layer base {
+    
+    .select>li:hover {
+        background-color: white;
+        color: black;
+        clip-path: polygon(0 0,100% 0,100% 70%,90% 100%,0 100%,0 0);
+    }
+    .active:hover{
+        background-color: #DBA1E9;
+    }
+    .active{
+        background-color: #DBA1E9;
+        color: black;
+        clip-path: polygon(0 0,100% 0,100% 70%,90% 100%,0 100%,0 0);
+    }
+    .select>li:hover+li{
+        display:inline
+    }
+    
+    
+        
+   
+  }
+
+  
