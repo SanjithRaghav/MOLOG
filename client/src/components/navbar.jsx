@@ -1,13 +1,8 @@
 import { userContext } from "../authentication/useContext.js";
 import React, { useState, useContext } from "react";
-import home from "../assets/home.svg";
-import userLogo from "../assets/user.svg";
-import search from "../assets/search.svg";
-import watchlist from "../assets/myMovies.svg";
-import social from "../assets/chat.svg";
 import NavExpand from './navExpand.jsx'
 import NavCollapse from './navCollapse.jsx'
-const Navbar = () => {
+const Navbar = (props) => {
   const [user, setUser] = useContext(userContext);
   const [active, setActive] = useState("watchlist");
   const [navstate,setNavstate]=useState("collapse")
@@ -54,12 +49,12 @@ const Navbar = () => {
       if (iter == event.target.dataset.value.length) clearInterval(interval);
       iter++;
     }, 75);
-  };
+    };
   return (
     <>
-        <NavCollapse active={active} setActive={setActive} setNavstate={setNavstate} navstate={navstate} hover={hover} />
+        <NavCollapse active={active} setActive={setActive} setNavstate={setNavstate} navstate={navstate} hover={hover} signHide={props.signHide} setSignHide={props.setSignHide} setLoader={props.setLoader} user={user} setUser={setUser}/>
 
-        <NavExpand active={active} setActive={setActive} setNavstate={setNavstate} navstate={navstate} hover={hover} />
+        <NavExpand active={active} setActive={setActive} setNavstate={setNavstate} navstate={navstate} hover={hover} signHide={props.signHide} setSignHide={props.setSignHide} setLoader={props.setLoader} user={user} setUser={setUser}/>
       
     </>
   );

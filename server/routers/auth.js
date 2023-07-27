@@ -15,7 +15,7 @@ router.get('/',async(req,res)=>{
       const newUser= {
         username:`${username}` , 
         email:`${email}` ,
-        movieList: []
+        movies: []
         }
       User.create(newUser).then((user)=>{
         console.log(user)

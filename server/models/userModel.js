@@ -5,21 +5,19 @@ const User = new mongoose.Schema(
     {
     email:{type:String,required:true,unique:true} ,
     username:{type:String,required:true} , 
-    movieList: [ 
-      {
-        name: String, 
-        movies: [ 
+    movies: [ 
           {
             id:String,
             title: String, 
             backdrop_path: String, 
             poster_path: String, 
             overview: String, 
-            watched:Boolean, 
+            watched:Boolean,
+            genre:[],
+            popularity:Number,
+            year:Number
           },
         ]
-      },
-    ]
     }
     ,{collection:"movieSite"}
 );

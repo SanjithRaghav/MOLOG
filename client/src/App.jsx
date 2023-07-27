@@ -6,19 +6,21 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Stack from "@mui/material/Stack";
 import LinearProgress from "@mui/material/LinearProgress";
 import Navbar from './components/navbar.jsx' 
-function App() {
-  const [user, setUser] = useState("not logged in");
-  const [signHide, setSignHide] = useState(false);
-  const [loader, setLoader] = useState(false);
+import Watchlist from "./components/watchlist.jsx";
+import Search  from "./components/search.jsx";
 
+function App() {
+  const [user, setUser] = useState(null);
+  const [signHide, setSignHide] = useState(true);
+  const [loader, setLoader] = useState(false);
+  
   const auth = getAuth();
   useEffect(() => {
     try {
-      // setLoader(true);
+      setLoader(true);
       onAuthStateChanged(auth, (user) => {
         if (user) {
           // console.log(user)
-          setUser(user.email);
           fetch(`http://localhost:3000/auth/find?email=${user.email}`)
             .then((res) => {
               return res.json();
@@ -31,17 +33,18 @@ function App() {
               console.log(error);
             });
         } else {
+          setLoader(false);
           console.log("no user");
         }
       });
     } catch (error) {
+      setLoader(false);
       console.log(error);
     }
   }, []);
 
   return (
     <>
-      
       <div className={`top-0 z-20 fixed w-screen ${!loader && "hidden"}`}>
         <Stack sx={{ width: "100%", color: "grey.500" }} spacing={2}>
           <LinearProgress color="secondary" />
@@ -50,17 +53,15 @@ function App() {
       <div>
       </div>
       <userContext.Provider value={[user, setUser]}>
-        <Navbar/>
 
         <BrowserRouter>
+        <Navbar signHide={signHide} setSignHide={setSignHide} setLoader={setLoader}/>
+        <Signin type="signin" hide={signHide} setHide={setSignHide} />
           <Routes>
             <Route index element={<h2>Hello</h2>} />
-            <Route
-              path="signin"
-              element={
-                <Signin type="signin" hide={signHide} setHide={setSignHide} />
-              }
-            />
+            <Route path="/watchlist" element={<Watchlist signHide={signHide} setSignHide={setSignHide}/>} />
+            <Route path="/search" element={<Search signHide={signHide} setSignHide={setSignHide} setLoader={setLoader}/>} />
+
           </Routes>
         </BrowserRouter>
       </userContext.Provider>

@@ -11,18 +11,9 @@ const User=require('../models/userModel')
 
 router.post('/addMovie',async (req,res)=>{
     try{
-        const list=await User.find({"email":req.body.email,"movieList.name":req.body.listName})
-        console.log(list.length)
-        if(list.length==0){
-            console.log("hello")
-            await User.updateOne(
-                {email:req.body.email},
-                {$push:{movieList:{name:req.body.listName,movies:[]}}}
-            )
-        }
         await User.updateOne(
-            {"email":req.body.email,"movieList.name":req.body.listName},
-            {$push:{"movieList.$.movies":req.body.movie}}
+            {"email":req.body.email},
+            {$push:{"movies":req.body.movie}}
         )
         const user=await User.findOne({email:req.body.email})
         res.json(user)
@@ -34,8 +25,8 @@ router.post('/addMovie',async (req,res)=>{
 router.post('/removeMovie',async (req,res)=>{
     try{
         await User.updateOne(
-            {"email":req.body.email,"movieList.name":req.body.listName},
-            {$pull:{"movieList.$.movies":{"id":req.body.movie.id}}}
+            {"email":req.body.email},
+            {$pull:{"movies":{"id":req.body.movie.id}}}
         )
         const user=await User.findOne({email:req.body.email})
         res.json(user)
@@ -50,7 +41,7 @@ router.post('/updateMovie',async (req,res)=>{
     try{
         await User.updateOne(
             {"email":req.body.email},
-            {$set:{"movieList.$[].movies.$[x]":req.body.movie}},
+            {$set:{"movies.$[x]":req.body.movie}},
             {arrayFilters: [
                 {"x.id": req.body.movie.id}
             ]}

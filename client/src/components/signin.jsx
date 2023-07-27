@@ -1,12 +1,8 @@
 import React, { useContext } from "react";
 import * as firebase from "firebase/auth";
 import {
-  inMemoryPersistence,
-  setPersistence,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
@@ -48,6 +44,7 @@ export default function Forms(props) {
         props.setHide(true);
       })
       .catch((error) => {
+        setLoader(false);
         console.log(error);
         // Handle Errors here.
         setError(`*${error.code}`);
@@ -75,6 +72,7 @@ export default function Forms(props) {
         props.setHide(true);
       })
       .catch((error) => {
+         setLoader(false);
         // Handle Errors here.
         setError(`*${error.code}`);
         const errorCode = error.code;
@@ -82,17 +80,7 @@ export default function Forms(props) {
       });
   };
 
-  const logout = async () => {
-    try {
-      await signOut(auth);
-      setError("");
-      console.log("logged out");
-      setUser("user logged out");
-    } catch (error) {
-      setError(`*${error.code}`);
-      console.log(error);
-    }
-  };
+ 
 
   const google = () => {
     const auth = getAuth();
@@ -113,6 +101,7 @@ export default function Forms(props) {
         props.setHide(true);
       })
       .catch((error) => {
+         setLoader(false);
         // Handle Errors here.
         setError(`*${error.code}`);
         const errorCode = error.code;
@@ -124,18 +113,13 @@ export default function Forms(props) {
       });
   };
 
-  return (
+  return (  
     <div className={props.hide ? "hidden" : ""}>
-      <div className={`top-0 z-20 fixed w-screen ${!loader && "hidden"}`}>
-        <Stack sx={{ width: "100%", color: "grey.500" }} spacing={2}>
-          <LinearProgress color="secondary" />
-        </Stack>
-      </div>
       <div
         onClick={() => {
           props.setHide(true);
         }}
-        className="fixed top-0 left-0 right-0 bottom-0 bg-black opacity-50"
+        className="fixed top-0 left-0 z-20 right-0 bottom-0 bg-black opacity-50"
       ></div>
       <div className="fixed translate-x-[-50%] translate-y-[-50%] left-[50%] top-[50%] z-30 w-[25%] bg-[#4F2C87] rounded-md px-6 pb-6">
         <div className=" pt-6 flex justify-between  mb-[2rem]">

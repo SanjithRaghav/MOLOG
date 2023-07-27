@@ -1,14 +1,31 @@
-import React,{useState} from 'react'
-
-const NavExpand=(props)=>{
+import React, { useState, useContext } from "react";
+import {signOut,getAuth} from "firebase/auth";
+import { useNavigate,Link } from "react-router-dom";
+  const NavExpand=(props)=>{    
+    const [user,setUser]=[props.user,props.setUser]
     const [active,setActive]=[props.active,props.setActive]
+    const navigate = useNavigate();
+    const logout = async () => {
+      try {
+        props.setLoader(true)
+        const auth = getAuth();
+        await signOut(auth);
+        console.log("logged out");
+        setUser(null);
+        props.setLoader(false)
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     return(<>
-        <div onMouseLeave={()=>{props.setNavstate("collapse")}} className={`${props.navstate=="collapse"?"hidden opacity-0":"opacity-100"} transition-opacity  z-10 fixed h-screen top-0 w-[22%] bg-black`}>
+        <div onMouseLeave={()=>{props.setNavstate("collapse")}} className={`${props.navstate=="collapse"?"hidden opacity-0":"opacity-100"} transition-opacity  z-20 fixed h-screen top-0 w-[21%] bg-black`}>
         <ul  className="text-white space-y-[1rem] mt-[2rem] px-2 select">
           <li
             data-value="HOME"
             onMouseEnter={props.hover}
             onClick={() => {
+              navigate('/')
               setActive("home");
 
             }}
@@ -16,7 +33,7 @@ const NavExpand=(props)=>{
               active == "home" && "active"
             } font-black text-[2.5vw]  tracking-tight cursor-pointer pl-2 pr-6 inline-block`}
           >
-            HOME{" "}
+            HOME
           </li>
           <li
             className={`${
@@ -29,6 +46,7 @@ const NavExpand=(props)=>{
             data-value="WATCHLIST"
             onMouseEnter={props.hover}
             onClick={() => {
+              navigate('/watchlist')
               setActive("watchlist");
             }}
             className={`${
@@ -48,6 +66,7 @@ const NavExpand=(props)=>{
             data-value="SEARCH"
             onMouseEnter={props.hover}
             onClick={() => {
+              navigate('/search')
               setActive("search");
             }}
             className={`${
@@ -67,6 +86,7 @@ const NavExpand=(props)=>{
             data-value="SOCIAL"
             onMouseEnter={props.hover}
             onClick={() => {
+              navigate('/social')
               setActive("social");
             }}
             className={`${
@@ -83,16 +103,23 @@ const NavExpand=(props)=>{
             03
           </li>
           <li
-            data-value="SIGNIN"
+            data-value={(user!=null)?"LOGOUT":"SIGNIN"}
             onMouseEnter={props.hover}
             onClick={() => {
               setActive("signin");
+              if(user==null){
+                props.setSignHide(false)
+              }
+              else{
+                logout()
+              }
+              setActive("watchlist")
             }}
             className={`${
               active == "signin" && "active"
             } font-black text-[2.5vw]  tracking-tight cursor-pointer pl-2 pr-6 inline-block`}
           >
-            SIGNIN
+            {(user!=null)?"LOGOUT":"SIGNIN"}
           </li>
           <li
             className={`${
@@ -103,7 +130,7 @@ const NavExpand=(props)=>{
           </li>
         </ul>
       </div>
-      <div className={`${props.navstate=="collapse"&&"hidden"} fixed w-[90%] right-0 bg-gradient-to-r from-black  h-screen`}></div>
+      <div className={`${props.navstate=="collapse"&&"hidden"} fixed w-[90%] z-10 right-0 bg-gradient-to-r from-black  h-screen`}></div>
     </>)
 }
 

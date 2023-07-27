@@ -23,7 +23,12 @@
     .select>li:hover+li{
         display:inline
     }
-    
+    body{
+        background-color: #1C2023;
+    }
+    .setting{
+        transform: rotate(90deg);    
+    }
     
         
    
