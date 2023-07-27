@@ -130,7 +130,7 @@ import { useNavigate,Link } from "react-router-dom";
           </li>
         </ul>
       </div>
-      <div className={`${props.navstate=="collapse"&&"hidden"} fixed w-[90%] z-10 right-0 bg-gradient-to-r from-black  h-screen`}></div>
+      <div className={`${props.navstate=="collapse"&&"hidden"} transition-all fixed w-[90%] z-10 right-0 bg-gradient-to-r from-black  h-screen`}></div>
     </>)
 }
 

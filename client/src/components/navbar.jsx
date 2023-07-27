@@ -2,9 +2,11 @@ import { userContext } from "../authentication/useContext.js";
 import React, { useState, useContext } from "react";
 import NavExpand from './navExpand.jsx'
 import NavCollapse from './navCollapse.jsx'
+import { useLocation } from "react-router-dom";
 const Navbar = (props) => {
+  const location=useLocation()
   const [user, setUser] = useContext(userContext);
-  const [active, setActive] = useState("watchlist");
+  const [active, setActive] = useState((location.pathname=="/")?"home":location.pathname.slice(1));
   const [navstate,setNavstate]=useState("collapse")
   const hover = (event) => {
     const alphabet = [
@@ -48,7 +50,7 @@ const Navbar = (props) => {
         .join("");
       if (iter == event.target.dataset.value.length) clearInterval(interval);
       iter++;
-    }, 75);
+    }, 30);
     };
   return (
     <>
