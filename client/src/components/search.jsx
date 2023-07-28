@@ -3,10 +3,11 @@ import { userContext } from '../authentication/useContext'
 import { useNavigate } from 'react-router-dom' 
 import searchLogo from "../assets/search.svg"
 import searchIllustration from "../assets/searchIllustration.svg"
+import AddWatchList from "./addWatchList.jsx"
 import add from "../assets/add.svg"
 
 const Search=(props)=>{
-    
+    const [watchHide,setWatchHide]=useState(true)
     const navigate=useNavigate()
     const [user,setUser]=useContext(userContext)
     const [movie,setMovie]=useState('')
@@ -15,7 +16,7 @@ const Search=(props)=>{
     const [currentPage,setCurrentPage]=useState(1)
     const [type,setType]=useState(true)
     const [addWatch,setAddWatch]=useState(0)
-
+    const [watchMovie,setWatchMovie] =useState(null)
     useEffect(()=>{
         const url = `https://api.themoviedb.org/3/search/${(type?"movie":"tv")}?query=${movie}`; 
         const options = {
@@ -59,7 +60,6 @@ const Search=(props)=>{
             fetch(url,options)
             .then((response)=>(response.json()))
             .then((json)=>{
-                console.log(json)
                 setMovieList(json.results)
                 props.setLoader(false)
                 window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -67,7 +67,6 @@ const Search=(props)=>{
             .catch((err)=>{
                 console.log(err)
             })
-            console.log(url)
             props.setLoader(false)
         }
         catch(error){
@@ -75,18 +74,34 @@ const Search=(props)=>{
             props.setLoader(false)
         }  
     },[currentPage])
+    useEffect(()=>{
+            if(watchMovie){
+                if(!user){
+                    props.setSignHide(false)
+                    setWatchMovie(null)
+                   
+                }
+                else{
+                    setWatchHide(false)
+                }
+            }
+    },[watchMovie])
+
     const display=movieList.map((mv,ind)=>(
-    <div onMouseLeave={()=>setAddWatch(0)} onMouseEnter={()=>{setAddWatch(mv.id)}} className='relative  h-[20rem]'>
-    <img key={ind} onError={(e)=>{e.target.parentNode.style.display="none"}} className=" w-[70%] absolute  rounded-md" src={`https://image.tmdb.org/t/p/original${mv.poster_path}`}/>
-    <div className={`w-[70%] h-[76%]  absolute z-10 transition-all duration-300 bg-black opacity-0 ${(mv.id==addWatch)&&"opacity-70"}`}></div>
-    <img src={add} className={`cursor-pointer w-[20%] left-[25%] top-[25%] z-30 absolute hover:-rotate-[180deg] hover:bg-[#A931F3] rounded-full p-2 transition-all opacity-0 ${(mv.id==addWatch)&&"opacity-100"}`}/>
-    {(mv.id==addWatch)&&<p className="absolute z-30 text-white bottom-[50%] left-[20%]">WatchList</p>}
+    <div  key={ind} onMouseLeave={()=>setAddWatch(0)} onMouseEnter={()=>{setAddWatch(mv.id)}} className='relative  h-[20rem]'>
+        <div className="relative w-[70%] ">
+            <img id={ind}  onError={(e)=>{e.target.parentNode.parentNode.style.display="none"}} className=" w-[100%]  rounded-md" src={`https://image.tmdb.org/t/p/original${mv.poster_path}`}/>
+            <div className={`w-[100%] h-[100%] top-0 absolute z-10 transition-all duration-300 rounded-md bg-black opacity-0 ${(mv.id==addWatch)&&"opacity-70"}`}></div>
+            <img onClick={()=>{setWatchMovie(mv)}} src={add} className={`cursor-pointer w-[30%] left-[35%] top-[35%] z-20 absolute hover:-rotate-[180deg] hover:bg-[#A931F3] rounded-full p-2 transition-all opacity-0 ${(mv.id==addWatch)&&"opacity-100"}`}/>
+            {(mv.id==addWatch)&&<p className="absolute z-30 text-white bottom-[30%] left-[31%] text-[1vw]">WatchList</p>}
+        </div>
+    
     </div>
     ))
-    const pageDisp=pages.map((pg)=>(<p onClick={(e)=>{ setCurrentPage(e.target.innerText)}} className={`text-white cursor-pointer transition-all ${(pg==currentPage)?"text-black bg-[#A931F3] px-2 rounded-full":"hover:-translate-y-1"}`}>{pg}</p>))
-   console.log(pages)
+    const pageDisp=pages.map((pg,ind)=>(<p key={ind} onClick={(e)=>{ setCurrentPage(e.target.innerText)}} className={`text-white cursor-pointer transition-all ${(pg==currentPage)?"text-black bg-[#A931F3] px-2 rounded-full":"hover:-translate-y-1"}`}>{pg}</p>))
     return (
     <>
+        {(!watchHide)&&<AddWatchList setHide={setWatchHide}  setWatchMovie={setWatchMovie} watchMovie={watchMovie} user={user} setUser={setUser}/>}
         <div className="w-[96%]  right-0 absolute">
             <div className="fixed -z-20 right-0 w-[35rem] h-[35rem] bg-[#A931F3] rounded-[35rem]  translate-x-[40%] translate-y-[-40%] blur-[379px]"></div>
             <div className="fixed -z-10 right-0 w-[96%] h-screen  backdrop-blur-[200px]"></div>
@@ -97,7 +112,7 @@ const Search=(props)=>{
                     <img src={searchLogo} className="inline w-[7%] relative right-7 bottom-1"/>
                     <div className="flex justify-evenly items-center">
                         <p className="text-white inline">Movies</p>
-                        <div onClick={()=>{setType((type)=>(!type))}} className="w-[2.1rem] h-[1.125rem] bg-[#A931F3] rounded-[1.125rem] relative shadow-lg"><div className={`${(!type)&&"translate-x-[100%]"} transition-all duration-200 w-[1.125rem] absolute   h-[1.125rem] rounded-[1.125rem]  bg-white`}></div></div>
+                        <div onClick={()=>{setType((type)=>(!type))}} className="cursor-pointer w-[2.1rem] h-[1.125rem] bg-[#A931F3] rounded-[1.125rem] relative shadow-lg"><div className={`${(!type)&&"translate-x-[100%]"} transition-all duration-200 w-[1.125rem] absolute   h-[1.125rem] rounded-[1.125rem]  bg-white`}></div></div>
                         <p className="text-white inline">TV shows</p>
                          
                     </div>

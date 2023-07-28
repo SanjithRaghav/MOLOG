@@ -29,7 +29,14 @@
     .setting{
         transform: rotate(90deg);    
     }
-    
+    .bgd{
+        background-image: url('https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg');
+        background-size: cover;
+    }
+    .bgs{
+        background-image: url('https://image.tmdb.org/t/p/original/v3QyboWRoA4O9RbcsqH8tJMe8EB.jpg');
+        background-size: cover;
+    }
         
    
   }
