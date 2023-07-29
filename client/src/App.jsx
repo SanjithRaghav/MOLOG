@@ -59,9 +59,8 @@ function App() {
         <Signin type="signin" hide={signHide} setHide={setSignHide} />
           <Routes>
             <Route index element={<h2>Hello</h2>} />
-            <Route path="/watchlist" element={<Watchlist signHide={signHide} setSignHide={setSignHide}/>} />
+            <Route path="/watchlist" element={<Watchlist signHide={signHide} setSignHide={setSignHide} setLoader={setLoader}/>} />
             <Route path="/search" element={<Search signHide={signHide} setSignHide={setSignHide} setLoader={setLoader}/>} />
-
           </Routes>
         </BrowserRouter>
       </userContext.Provider>

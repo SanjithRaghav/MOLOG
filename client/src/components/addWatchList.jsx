@@ -5,7 +5,7 @@ import added from '../assets/added.svg'
 
 
 const AddWatchList=(props)=>{
-    const [watch,setWatch]=useState(true)
+    const [watch,setWatch]=useState(false)
     const [movie,setMovie]=[props.watchMovie,props.setWatchMovie]
     const [notify,setNotify]=useState(false)
     const addMovie=()=>{
@@ -24,14 +24,15 @@ const AddWatchList=(props)=>{
                 "email": props.user.email,
                 "movie": {
                         "id":movie.id,
-                        "title": movie.title, 
+                        "title": ((props.type)?movie.title:movie.name), 
                         "backdrop_path": movie.backdrop_path, 
                         "poster_path": movie.poster_path, 
                         "overview": movie.overview, 
                         "watched":watch,
                         "genre":movie.genre_ids,
-                        "popularity":movie.popularity,
-                        "year":""
+                        "popularity":movie.vote_average,
+                        "year":((props.type)?movie.release_date.slice(0,4):movie.first_air_date.slice(0,4)),
+                        "movieType":(props.type)?("movie"):("tv")
                     }
             }),
             headers:{

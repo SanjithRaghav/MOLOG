@@ -15,7 +15,8 @@ const User = new mongoose.Schema(
             watched:Boolean,
             genre:[],
             popularity:Number,
-            year:Number
+            year:Number,
+            movieType:String
           },
         ]
     }
