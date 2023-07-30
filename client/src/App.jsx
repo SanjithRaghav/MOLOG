@@ -8,6 +8,7 @@ import LinearProgress from "@mui/material/LinearProgress";
 import Navbar from './components/navbar.jsx' 
 import Watchlist from "./components/watchlist.jsx";
 import Search  from "./components/search.jsx";
+import Home from './components/home.jsx'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -58,7 +59,7 @@ function App() {
         <Navbar signHide={signHide} setSignHide={setSignHide} setLoader={setLoader}/>
         <Signin type="signin" hide={signHide} setHide={setSignHide} />
           <Routes>
-            <Route index element={<h2>Hello</h2>} />
+            <Route index element={<Home/>} />
             <Route path="/watchlist" element={<Watchlist signHide={signHide} setSignHide={setSignHide} setLoader={setLoader}/>} />
             <Route path="/search" element={<Search signHide={signHide} setSignHide={setSignHide} setLoader={setLoader}/>} />
           </Routes>
