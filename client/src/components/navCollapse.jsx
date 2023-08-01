@@ -25,7 +25,7 @@ const NavCollapse=(props)=>{
         
     <>
         
-        <div onMouseOver={()=>{setNavstate("expand")}} className="ease-in z-10 duration-300 fixed h-screen top-0 w-[4%] bg-[#1F2326]">
+        <div onMouseOver={()=>{setNavstate("expand")}} className="ease-in z-20 duration-300 fixed h-screen top-0 w-[4%] bg-[#1F2326]">
         <ul  className={`${navstate=="expand"&&"hidden"}  md:space-y-[1rem] lg:space-y-[2rem] mt-[2rem] px-2`}>
           <li
             onClick={() => {

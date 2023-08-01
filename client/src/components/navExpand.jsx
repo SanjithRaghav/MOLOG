@@ -19,6 +19,8 @@ import { useNavigate,Link } from "react-router-dom";
     };
 
     return(<>
+      <div className={`${props.navstate=="collapse"&&"hidden"} transition-all fixed w-[90%] z-20 right-0 bg-gradient-to-r from-black  h-screen`}></div>
+
         <div onMouseLeave={()=>{props.setNavstate("collapse")}} className={`${props.navstate=="collapse"?"hidden opacity-0":"opacity-100"} transition-opacity  z-20 fixed h-screen top-0 w-[21%] bg-black`}>
         <ul  className="text-white space-y-[1rem] mt-[2rem] px-2 select">
           <li
@@ -130,7 +132,6 @@ import { useNavigate,Link } from "react-router-dom";
           </li>
         </ul>
       </div>
-      <div className={`${props.navstate=="collapse"&&"hidden"} transition-all fixed w-[90%] z-10 right-0 bg-gradient-to-r from-black  h-screen`}></div>
     </>)
 }
 
