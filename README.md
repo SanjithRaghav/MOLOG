@@ -9,5 +9,5 @@ for demo
 - open server folder -> run "node index.js"
 - open localhost:5173
 
-required -> (mongodb,nodejs)
+required -> (mongodb,nodejs) ,
 tech stack -> (MERN)
