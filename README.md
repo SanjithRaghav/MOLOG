@@ -10,3 +10,4 @@ for demo ->
 - open localhost:5173
 
 required -> (mongodb,nodejs)
+tech stack -> (MERN)
