@@ -3,12 +3,12 @@ import {getAuth} from "firebase/auth"
 
 
 const app= initializeApp({
-    apiKey: "AIzaSyBKWgHLuSos4TuI6k_Hez4hC2GeNFpYgfs",
-    authDomain: "lofty-hall-365414.firebaseapp.com",
-    projectId: "lofty-hall-365414",
-    storageBucket: "lofty-hall-365414.appspot.com",
-    messagingSenderId: "241822501121",
-    appId: "1:241822501121:web:30216d65c63c82b9f77300"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID
 })
 
 export const auth=getAuth(app);

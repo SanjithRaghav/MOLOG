@@ -201,7 +201,7 @@ const Watchlist=(props)=>{
 
         }
 
-        return (<div key={ind} onClick={(e)=>{Expand("B",ind,e)}} onMouseLeave={(e)=>{Relax("B",ind,e)}} style={(ind==expandCardB)?bgl:bgs}  className={`${(ind!=expandCardB)&&"cursor-pointer"} transition-all mx-[2%] h-[150%] rounded-lg  opacity-100`}>
+        return (<div key={ind} onClick={(e)=>{Expand("B",ind,e)}} onMouseLeave={(e)=>{Relax("B",ind,e)}} style={(ind==expandCardB)?bgl:bgs}  className={`${(ind!=expandCardB)&&"cursor-pointer"} transition-all duration-1000 mx-[2%] h-[150%] rounded-lg  opacity-100`}>
             {(ind==expandCardB)&&
                 <div  className="w-[100%] h-[100%] relative">
                     <a href={`https://www.themoviedb.org/${mv.movieType}/${mv.id}-${mv.title}/watch?locale=IN`} target='_blank'>
@@ -245,7 +245,7 @@ const Watchlist=(props)=>{
             minWidth:"44%",
            
         }
-        return (<div key={ind} onClick={(e)=>{Expand("A",ind,e)}} onMouseLeave={(e)=>{Relax("A",ind,e)}}   style={(ind==expandCardA)?bgl:bgs}  className={`${(ind!=expandCardA)&&"cursor-pointer"} transition-all min-w-[12%] mx-[2%] h-[150%] rounded-lg  opacity-100`}>
+        return (<div key={ind} onClick={(e)=>{Expand("A",ind,e)}} onMouseLeave={(e)=>{Relax("A",ind,e)}}   style={(ind==expandCardA)?bgl:bgs}  className={`${(ind!=expandCardA)&&"cursor-pointer"} transition-all duration-1000 min-w-[12%] mx-[2%] h-[150%] rounded-lg  opacity-100`}>
             {(ind==expandCardA)&&
                 <div  className="w-[100%] h-[100%] relative">
                     <a href={`https://www.themoviedb.org/${mv.movieType}/${mv.id}-${mv.title}/watch?locale=IN`} target='_blank'>
@@ -316,7 +316,7 @@ const Watchlist=(props)=>{
                 <div className="fixed -z-10 right-0 w-[96%] h-screen  backdrop-blur-[200px]"></div>
                 <div>
                     <p className=" font-bold text-white pt-5 pl-[4%] text-[3rem]">WatchList</p>
-                   {(!user)&&( <p onClick={()=>{props.setSignHide(false)}} className="text-white rounded-full absolute top-[60%] left-[50%] underline cursor-pointer z-20">Sign in!</p>)}
+                   {(!user)&&( <p onClick={()=>{props.setSignHide(false)}} className="text-white rounded-full absolute top-[60%] left-[50%] underline cursor-pointer z-10">Sign in!</p>)}
                     {(!user)&&(<img className="w-[60%] mx-auto bottom-[250px] relative " src={Movie}/>)}
                     {(user)&&<div className={`mx-[4%] mt-6 flex justify-between `}>
                         {movieList}

@@ -6,22 +6,7 @@ import arrowl from '../assets/arrow-left.svg'
 import arrowr from '../assets/arrow-right.svg'
 import { userContext } from '../authentication/useContext'
 import AddWatchList from "./addWatchList.jsx"
-
 const Home=(props)=>{
-  const inter=()=>{
-    setCurrentIndex(0)
-    const itr=setInterval(()=>{
-      setCurrentIndex((prev)=>{
-        if(prev==5){
-          setPage(1)
-        }
-        else if(prev==8){
-          setPage(0)
-        }
-        return ((prev+1)%9)
-      })
-    },5000)
-  }
   const [left,setLeft]=useState(false)
   const [right,setRight]=useState(true)
     const [user,setUser]=useContext(userContext)
@@ -33,7 +18,6 @@ const Home=(props)=>{
     const [watchMovie,setWatchMovie]=useState(null)
     useEffect(()=>{
       setCurrentMovie(trending[0])
-      
     },[trending])
     useEffect(()=>{
       const url = 'https://api.themoviedb.org/3/trending/movie/week';
@@ -57,6 +41,26 @@ const Home=(props)=>{
     },[currentIndex])
 
     
+    const interval=()=>{
+      setCurrentIndex((prev)=>{
+        if(prev==5){
+          setPage(1)
+        }
+        else if(prev==8){
+          setPage(0)
+        }
+        return ((prev+1)%9)
+      })
+    }
+    const [animState,setAnimState]=useState(null);
+    const inter=()=>{
+      if(animState!=null){
+        clearInterval(animState)
+      }
+      const anim=setInterval(interval,4000)
+      setAnimState(anim)
+    }
+
 
     const trigg=()=>{
       const alphabet = [
@@ -143,8 +147,9 @@ const Home=(props)=>{
           return (prev-1)
       })
     }
+
     const trendingDisp=trending.slice(0,9).map((mv,ind)=>{
-      return (<div onClick={()=>{setCurrentIndex(ind)}} key={ind} className="cursor-pointer w-[15vw] relative mx-[0.5vw]">
+      return (<div onClick={()=>{inter();setCurrentIndex(ind)}} key={ind} className="cursor-pointer w-[15vw] relative mx-[0.5vw]">
         <img className={` transition-all duration-500 inline ${(ind==0)?"w-[44%]":"w-[50%]"}`} src={`src/assets/${(ind==currentIndex)?`${ind+1}c`:(ind+1)}.svg`}/>
         <img className='inline w-[50%] z-10 right-4   relative rounded-md' src={`https://image.tmdb.org/t/p/w500${mv.poster_path}`}/>
         </div>)
