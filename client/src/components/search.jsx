@@ -1,10 +1,10 @@
 import {useState,useEffect,useContext} from 'react'
 import { userContext } from '../authentication/useContext'
 import { useNavigate } from 'react-router-dom' 
-import searchLogo from "../assets/search.svg"
-import searchIllustration from "../assets/searchIllustration.svg"
+import searchLogo from "/search.svg"
+import searchIllustration from "/SearchIllustration.svg"
 import AddWatchList from "./addWatchList.jsx"
-import add from "../assets/add.svg"
+import add from "/add.svg"
 
 const Search=(props)=>{
     const [watchHide,setWatchHide]=useState(true)

@@ -9,8 +9,8 @@ import {
 } from "firebase/auth";
 import { auth } from "../authentication/firebase.js";
 import { userContext } from "../authentication/useContext.js";
-import removeImg from "../assets/remove.svg";
-import googleLogo from "../assets/google.svg";
+import removeImg from "/remove.svg";
+import googleLogo from "/google.svg";
 import Stack from "@mui/material/Stack";
 import LinearProgress from "@mui/material/LinearProgress";
 

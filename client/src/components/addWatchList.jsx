@@ -1,6 +1,6 @@
 import {useState,useEffect} from 'react'
-import Arrow from "../assets/arrow.svg"
-import added from '../assets/added.svg'
+import Arrow from "/arrow.svg"
+import added from '/added.svg'
 
 
 

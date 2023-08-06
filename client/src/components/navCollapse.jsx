@@ -1,10 +1,10 @@
 import React from 'react'
-import home from "../assets/home.svg";
-import userLogo from "../assets/user.svg";
-import search from "../assets/search.svg";
-import watchlist from "../assets/myMovies.svg";
-import social from "../assets/chat.svg";
-import logoutLogo from "../assets/logout.svg";
+import home from "/home.svg";
+import userLogo from "/user.svg";
+import search from "/search.svg";
+import watchlist from "/myMovies.svg";
+import social from "/chat.svg";
+import logoutLogo from "/logout.svg";
 import { useLocation } from "react-router-dom";
 const NavCollapse=(props)=>{
     const location=useLocation()

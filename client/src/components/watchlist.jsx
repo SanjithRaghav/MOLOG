@@ -1,12 +1,12 @@
 import {useState,useEffect,useContext} from 'react'
 import { userContext } from '../authentication/useContext'
-import Movie from "../assets/Movie.svg"
-import arrowl from '../assets/arrow-left.svg'
-import arrowr from '../assets/arrow-right.svg'
-import notFound from '../assets/notfound.svg'
+import Movie from "/Movie.svg"
+import arrowl from '/arrow-left.svg'
+import arrowr from '/arrow-right.svg'
+import notFound from '/notfound.svg'
 import { useNavigate } from 'react-router-dom'
-import star from '../assets/star.svg'
-import play from '../assets/play.svg'
+import star from '/star.svg'
+import play from '/play.svg'
 const Watchlist=(props)=>{
     const [watched,setWatched]=useState([])
     const [watchLater,setWatchLater]=useState([])
