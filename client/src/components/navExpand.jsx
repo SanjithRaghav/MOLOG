@@ -17,6 +17,7 @@ import { useNavigate,Link } from "react-router-dom";
         console.log(error);
       }
     };
+    
 
     return(<>
       <div className={`${props.navstate=="collapse"&&"hidden"} transition-all fixed w-[90%] z-20 right-0 bg-gradient-to-r from-black  h-screen`}></div>
@@ -108,14 +109,12 @@ import { useNavigate,Link } from "react-router-dom";
             data-value={(user!=null)?"LOGOUT":"SIGNIN"}
             onMouseEnter={props.hover}
             onClick={() => {
-              setActive("signin");
               if(user==null){
                 props.setSignHide(false)
               }
               else{
                 logout()
               }
-              setActive("watchlist")
             }}
             className={`${
               active == "signin" && "active"

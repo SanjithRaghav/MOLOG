@@ -5,7 +5,9 @@ import search from "../assets/search.svg";
 import watchlist from "../assets/myMovies.svg";
 import social from "../assets/chat.svg";
 import logoutLogo from "../assets/logout.svg";
+import { useLocation } from "react-router-dom";
 const NavCollapse=(props)=>{
+    const location=useLocation()
     const [user,setUser]=[props.user,props.setUser]
 
     const [active,setActive,setNavstate,navstate]=[props.active,props.setActive,props.setNavstate,props.navstate]
@@ -73,14 +75,12 @@ const NavCollapse=(props)=>{
           </li>
           <li
             onClick={() => {
-              setActive("signin");
               if(user==null){
                 props.setSignHide(false)
               }
               else{
                 logout()
               }
-              setActive("watchlist")
             }}
             className={`${
               active == "signin" && "bg-[#383639]"

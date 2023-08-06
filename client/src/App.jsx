@@ -18,7 +18,6 @@ function App() {
   const auth = getAuth();
   useEffect(() => {
     try {
-      console.log(import.meta.env.VITE_FIREBASE_API_KEY)
       setLoader(true);
       onAuthStateChanged(auth, (user) => {
         if (user) {

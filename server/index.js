@@ -1,3 +1,6 @@
+const dotenv=require('dotenv')
+dotenv.config();
+const path=require('path')
 const express = require('express')
 const app = express();
 const bodyParser=require('body-parser')
@@ -6,7 +9,7 @@ const mongoose = require('mongoose');
 
 app.use(express.json())
 app.use(cors());
-mongoose.connect("mongodb://127.0.0.1:27017/movieSite",{useNewUrlParser:true})
+mongoose.connect(process.env.MONGO_URI)
 
 const con = mongoose.connection
 con.on('open', ()=>{
@@ -17,9 +20,8 @@ const authRouter=require('./routers/auth')
 const moviesRouter=require('./routers/movies')
 
 
-
-
 app.use('/auth', authRouter)
+
 app.use('/list',listRouter)
 app.use('/movies',moviesRouter)
 

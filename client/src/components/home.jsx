@@ -6,7 +6,29 @@ import arrowl from '../assets/arrow-left.svg'
 import arrowr from '../assets/arrow-right.svg'
 import { userContext } from '../authentication/useContext'
 import AddWatchList from "./addWatchList.jsx"
+import img1c from '../assets/1c.svg'
+import img2c from '../assets/2c.svg'
+import img3c from '../assets/3c.svg'
+import img4c from '../assets/4c.svg'
+import img5c from '../assets/5c.svg'
+import img6c from '../assets/6c.svg'
+import img7c from '../assets/7c.svg'
+import img8c from '../assets/8c.svg'
+import img9c from '../assets/9c.svg'
+
+import img1 from '../assets/1.svg'
+import img2 from '../assets/2.svg'
+import img3 from '../assets/3.svg'
+import img4 from '../assets/4.svg'
+import img5 from '../assets/5.svg'
+import img6 from '../assets/6.svg'
+import img7 from '../assets/7.svg'
+import img8 from '../assets/8.svg'
+import img9 from '../assets/9.svg'
+
 const Home=(props)=>{
+  const img=[img1,img2,img3,img4,img5,img6,img7,img8,img9]
+  const imgc=[img1c,img2c,img3c,img4c,img5c,img6c,img7c,img8c,img9c]
   const [left,setLeft]=useState(false)
   const [right,setRight]=useState(true)
     const [user,setUser]=useContext(userContext)
@@ -44,9 +66,13 @@ const Home=(props)=>{
     const interval=()=>{
       setCurrentIndex((prev)=>{
         if(prev==5){
+          setRight(false)
+          setLeft(true)
           setPage(1)
         }
         else if(prev==8){
+          setRight(true)
+          setLeft(false)
           setPage(0)
         }
         return ((prev+1)%9)
@@ -150,7 +176,7 @@ const Home=(props)=>{
 
     const trendingDisp=trending.slice(0,9).map((mv,ind)=>{
       return (<div onClick={()=>{inter();setCurrentIndex(ind)}} key={ind} className="cursor-pointer w-[15vw] relative mx-[0.5vw]">
-        <img className={` transition-all duration-500 inline ${(ind==0)?"w-[44%]":"w-[50%]"}`} src={`src/assets/${(ind==currentIndex)?`${ind+1}c`:(ind+1)}.svg`}/>
+        <img className={` transition-all duration-500 inline ${(ind==0)?"w-[44%]":"w-[50%]"}`} src={(ind==currentIndex)?imgc[ind]:img[ind]}/>
         <img className='inline w-[50%] z-10 right-4   relative rounded-md' src={`https://image.tmdb.org/t/p/w500${mv.poster_path}`}/>
         </div>)
     })  
