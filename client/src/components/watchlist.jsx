@@ -115,7 +115,7 @@ const Watchlist=(props)=>{
     
     const update=(movie,watch)=>{
         props.setLoader(true)
-         const url="http://localhost:3000/movies/updateMovie"
+         const url="https://molog.onrender.com/movies/updateMovie"
          fetch(url,{
              method:"POST",
              body:JSON.stringify({
@@ -151,7 +151,7 @@ const Watchlist=(props)=>{
      } 
      const remove=(movie)=>{
          props.setLoader(true)
-          const url="http://localhost:3000/movies/removeMovie"
+          const url="https://molog.onrender.com/movies/removeMovie"
           fetch(url,{
               method:"POST",
               body:JSON.stringify({

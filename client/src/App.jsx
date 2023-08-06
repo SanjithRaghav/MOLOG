@@ -22,7 +22,7 @@ function App() {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           // console.log(user)
-          fetch(`http://localhost:3000/auth/find?email=${user.email}`)
+          fetch(`https://molog.onrender.com/auth/find?email=${user.email}`)
             .then((res) => {
               return res.json();
             })

@@ -32,7 +32,7 @@ export default function Forms(props) {
     createUserWithEmailAndPassword(auth, email, password, username)
       .then((userCredential) => {
         return fetch(
-          `http://localhost:3000/auth?email=${userCredential.user.email}&username=${username}`
+          `https://molog.onrender.com/auth?email=${userCredential.user.email}&username=${username}`
         );
       })
       .then((res) => {
@@ -60,7 +60,7 @@ export default function Forms(props) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         return fetch(
-          `http://localhost:3000/auth/find?email=${userCredential.user.email}&username=${username}`
+          `https://molog.onrender.com/auth/find?email=${userCredential.user.email}&username=${username}`
         );
       })
       .then((res) => {
@@ -89,7 +89,7 @@ export default function Forms(props) {
     signInWithPopup(auth, provider)
       .then((userCredential) => {
         return fetch(
-          `http://localhost:3000/auth?email=${userCredential.user.email}&username=${userCredential.user.displayName}`
+          `https://molog.onrender.com/auth?email=${userCredential.user.email}&username=${userCredential.user.displayName}`
         );
       })
       .then((res) => {

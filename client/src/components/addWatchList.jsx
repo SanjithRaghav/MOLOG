@@ -9,12 +9,12 @@ const AddWatchList=(props)=>{
     const [movie,setMovie]=[props.watchMovie,props.setWatchMovie]
     const [notify,setNotify]=useState(false)
     const addMovie=()=>{
-        let url="http://localhost:3000/movies/addMovie"
+        let url="https://molog.onrender.com/movies/addMovie"
             props.user.movies.forEach((mv) => {
             // console.log(mv)
             if(mv.id==movie.id){
                 // console.log("hello")
-                url="http://localhost:3000/movies/updateMovie"
+                url="https://molog.onrender.com/movies/updateMovie"
             }
         })
         console.log(url)
