@@ -22,7 +22,7 @@ export default function Forms(props) {
   const [user, setUser] = useContext(userContext);
   const provider = new GoogleAuthProvider();
   const [error, setError] = React.useState("");
-  const [loader, setLoader] = React.useState(false);
+  const [loader, setLoader] = [props.loader,props.setLoader]
   const [type, setType] = React.useState(props.type);
   provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
@@ -56,6 +56,7 @@ export default function Forms(props) {
 
   const signin = (email, password) => {
     const auth = getAuth();
+    console.log(loader)
     setLoader(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {

@@ -192,7 +192,7 @@ const Home=(props)=>{
     }
     return (
       <>
-       {(!watchHide)&&<AddWatchList type="movie" setHide={setWatchHide}  setWatchMovie={setWatchMovie} watchMovie={watchMovie} user={user} setUser={setUser}/>}
+       {(!watchHide)&&<AddWatchList type="movie" setHide={setWatchHide}  setWatchMovie={setWatchMovie} setLoader={props.setLoader} watchMovie={watchMovie} user={user} setUser={setUser}/>}
     <div className='overflow-x-hidden w-screen h-screen'>
 
         <div ref={contRef} className='h-screen w-screen bg-black overflow-hidden z-20 absolute'>

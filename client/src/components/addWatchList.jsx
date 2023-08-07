@@ -9,6 +9,7 @@ const AddWatchList=(props)=>{
     const [movie,setMovie]=[props.watchMovie,props.setWatchMovie]
     const [notify,setNotify]=useState(false)
     const addMovie=()=>{
+        props.setLoader(true)
         let url="https://molog.onrender.com/movies/addMovie"
             props.user.movies.forEach((mv) => {
             // console.log(mv)
@@ -45,10 +46,12 @@ const AddWatchList=(props)=>{
             return res.json()
 
         }).then((json)=>{
+            props.setLoader(false)
             setNotify(true)
             props.setUser(json)
             // console.log(json)
         }).catch((error)=>{
+          props.setLoader(false)
             console.log(error)
         });
     } 

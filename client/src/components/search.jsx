@@ -101,7 +101,7 @@ const Search=(props)=>{
     const pageDisp=pages.map((pg,ind)=>(<p key={ind} onClick={(e)=>{ setCurrentPage(e.target.innerText)}} className={`text-white cursor-pointer transition-all ${(pg==currentPage)?"text-black bg-[#A931F3] px-2 rounded-full":"hover:-translate-y-1"}`}>{pg}</p>))
     return (
     <>
-        {(!watchHide)&&<AddWatchList type={type} setHide={setWatchHide}  setWatchMovie={setWatchMovie} watchMovie={watchMovie} user={user} setUser={setUser}/>}
+        {(!watchHide)&&<AddWatchList type={type} setHide={setWatchHide} setLoader={props.setLoader}  setWatchMovie={setWatchMovie} watchMovie={watchMovie} user={user} setUser={setUser}/>}
         <div className="w-[96%]  right-0 absolute">
             <div className="fixed -z-20 right-0 w-[35rem] h-[35rem] bg-[#A931F3] rounded-[35rem]  translate-x-[40%] translate-y-[-40%] blur-[379px]"></div>
             <div className="fixed -z-10 right-0 w-[96%] h-screen  backdrop-blur-[200px]"></div>
